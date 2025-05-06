@@ -10,9 +10,7 @@
  * @author Sarah Caudill
  * @version 1.0
  */
-package edu.miracosta.cs112.finalproject.finalproject;
-
-import javafx.scene.canvas.GraphicsContext;
+package edu.miracosta.cs112.finalproject.finalproject.Models;
 
 public abstract class GameEntity { //core class and abstract class
     /**
@@ -38,21 +36,13 @@ public abstract class GameEntity { //core class and abstract class
     public abstract void update();
 
     /**
-     * renders the entity onto the game screen using the given GraphicsContext code
-     * this method must be implemented by subclasses to specify how the entity should be drawn
-     * @param gc the GraphicsContext code is used for rendering
-     */
-
-    public abstract void render(GraphicsContext gc);
-
-    /**
      * gets the current x-coordinate of the entity
      *
      * @return the x-coordinate of the entity
      */
 
     public double getX() {
-            return x;
+        return x;
     }
 
     /**
@@ -61,8 +51,7 @@ public abstract class GameEntity { //core class and abstract class
      * @return the y-coordinate of the entity
      */
 
-    public double getY() {
-            return y;
-
+    public double getY(){
+        return y;
     }
 }

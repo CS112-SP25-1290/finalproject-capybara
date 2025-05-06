@@ -1,37 +1,39 @@
-package edu.miracosta.cs112.finalproject.finalproject;
+package edu.miracosta.cs112.finalproject.finalproject.Models;
 
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.scene.paint.Color;
 
 public class PlayerShip extends GameEntity { //standalone class
-    private final int speed;
+    private final int speed = 5;
     private final List<Bullet> bullets;
+    private final ImageView imageView;
 
     public PlayerShip(double x, double y) {
         super(x, y);
-        this.speed = 5; // Default movement speed
         this.bullets = new ArrayList<>();
+        this.imageView = new ImageView(new Image(getClass().getResource("/images/player.png").toExternalForm()));
+        imageView.setLayoutX(x);
+        imageView.setLayoutY(y);
     }
 
     public void moveLeft() {
         if (x - speed >= 0) {
             x -= speed;
+            imageView.setLayoutX(x);
         }
     }
 
     public void moveRight(double boundary) {
-        if (x + speed <= boundary)
+        if (x + speed <= boundary - imageView.getImage().getWidth()) {
             x += speed;
+            imageView.setLayoutX(x);
+        }
     }
 
     public void shoot() {
-        bullets.add(new Bullet(x + 15, y));
-    }
-
-    public List<Bullet> getBullets() {
-        return bullets;
+        bullets.add(new Bullet(x + imageView.getImage().getWidth() / 2, y));
     }
 
     @Override
@@ -46,15 +48,12 @@ public class PlayerShip extends GameEntity { //standalone class
         }
     }
 
-    @Override
-    public void render(GraphicsContext gc) {
-        gc.setFill(Color.BLUE);
-        gc.fillRect(x, y, 30, 30); // Render the player ship
+    public List<Bullet> getBullets() {
+        return bullets;
+    }
 
-        // Render all bullets
-        for (Bullet bullet : bullets) {
-            bullet.render(gc);
-        }
+    public ImageView getImageView() {
+        return imageView;
     }
 
     public static class Bullet { // Inner class
@@ -81,11 +80,6 @@ public class PlayerShip extends GameEntity { //standalone class
 
         public double getY() {
             return y;
-        }
-
-        public void render(GraphicsContext gc) {
-            gc.setFill(Color.RED); // Color for the bullet
-            gc.fillRect(x, y, 5, 10); // Render the bullet
         }
     }
 }
