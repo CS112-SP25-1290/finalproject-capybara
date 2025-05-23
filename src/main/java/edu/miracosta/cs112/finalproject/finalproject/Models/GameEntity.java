@@ -12,6 +12,8 @@
  */
 package edu.miracosta.cs112.finalproject.finalproject.Models;
 
+import javafx.scene.image.ImageView;
+
 public abstract class GameEntity { //core class and abstract class
     /**
      * the x-coordinate and y-coordinate of the entity in the game world
@@ -36,22 +38,17 @@ public abstract class GameEntity { //core class and abstract class
     public abstract void update();
 
     /**
-     * gets the current x-coordinate of the entity
-     *
-     * @return the x-coordinate of the entity
+     * returns the ImageView representing this entity.
+     * subclasses must override this method.
      */
-
-    public double getX() {
-        return x;
-    }
+    public abstract ImageView getImageView();
 
     /**
-     * gets the current y-coordinate of the entity
-     *
-     * @return the y-coordinate of the entity
+     * checks collision with another GameEntity based on ImageView bounds.
      */
-
-    public double getY(){
-        return y;
+    public boolean collidesWith(GameEntity other) {
+        return this.getImageView().getBoundsInParent().intersects(other.getImageView().getBoundsInParent());
     }
+
 }
+

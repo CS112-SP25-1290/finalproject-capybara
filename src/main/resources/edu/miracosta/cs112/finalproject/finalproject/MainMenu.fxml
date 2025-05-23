@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<VBox xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="edu.miracosta.cs112.finalproject.finalproject.MainMenu"
-            prefHeight="400.0" prefWidth="600.0">
+            fx:controller="edu.miracosta.cs112.finalproject.finalproject.Controllers.MainMenuController"
+            alignment="CENTER" spacing = "15" prefWidth="600.0" prefHeight="500"
+            style="-fx-background-color: black;">
 
-</AnchorPane>
+
+<Label text="Mars Attacks: Space X Saga" style="-fx-font-size: 32px; -fx-text-fill: white;"/>
+<Label fx:id="highScoreLabel" text="High Score: 0" prefWidth="200" alignment="CENTER" style="-fx-font-size: 16px; -fx-text-fill: white;"/>
+
+<Button text="Play" fx:id="playButton" prefWidth="200"/>
+<Button text="Instructions" fx:id="instructionsButton" prefWidth="200"/>
+<Button text ="🔊" fx:id="soundButton" prefWidth="200"/>
+<Button text="Exit" fx:id="exitButton" prefWidth="200"/>
+
+</VBox>
